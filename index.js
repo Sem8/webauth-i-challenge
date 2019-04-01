@@ -1,10 +1,10 @@
 const express = require("express");
 const helmet = require("helmet");
-const cors = require('cors');
+const cors = require("cors");
 
-const usersRouter = require('./routers/users-router');
-const loginRouter = require('./routers/login-router');
-const registerRouter = require('./routers/register-router');
+const usersRouter = require("./routers/users-router");
+const loginRouter = require("./routers/login-router");
+const registerRouter = require("./routers/register-router");
 
 const server = express();
 
@@ -18,11 +18,11 @@ server.get("/", (req, res) => {
   );
 });
 
-server.use('/api/users', usersRouter);
-server.use('/api/login', loginRouter);
-server.use('/api/register', registerRouter);
+server.use("/api/users", usersRouter);
+server.use("/api/login", loginRouter);
+server.use("/api/register", registerRouter);
 
 const port = process.env.PORT || 5000;
 server.listen(port, () => {
-    console.log(`\n=== Web API listening on http://localhost:${port} ===\n`)
+  console.log(`\n=== Web API listening on http://localhost:${port} ===\n`);
 });

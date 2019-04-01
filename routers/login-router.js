@@ -1,28 +1,35 @@
-const loginRouter = require('express').Router();
-const knex = require('knex');
-const bcrypt = require('bcryptjs');
+const loginRouter = require("express").Router();
+const knex = require("knex");
+const bcrypt = require("bcryptjs");
 
-const userdb = require('../database/dbConfig.js');
-const Users = require('../users/users-model.js');
+const userdb = require("../database/dbConfig.js");
+const Users = require("../users/users-model.js");
 
-loginRouter.post('/', (req, res) => {
-    let { username, password } = req.body;
-    Users.findBy({ username }).first()
+loginRouter.post("/", (req, res) => {
+  let { username, password } = req.body;
+  Users.findBy({ username })
+    .first()
     .then(user => {
-        if (user && bcrypt.compareSync(password, user.password)) {
-            res.status(200).json({ message: `Welcome ${user.username} you're logged in.`});
-        } else {
-            res.status(401).json({ message: 'You shall not pass, your credentials are invalid'});
-        }
+      if (user && bcrypt.compareSync(password, user.password)) {
+        res
+          .status(200)
+          .json({ message: `Welcome ${user.username} you're logged in.` });
+      } else {
+        res
+          .status(401)
+          .json({
+            message: "You shall not pass, your credentials are invalid"
+          });
+      }
     })
     .catch(error => {
-        res.status(500).json(error);
+      res.status(500).json(error);
     });
 
-    // res.send('Please log in');
+  // res.send('Please log in');
 });
 
-// server.post('/api/login', (req, res) => {
+// loginRouter.post('/', (req, res) => {
 //     let { username, password } = req.body;
 //     users('users')
 //       .where({ username })
