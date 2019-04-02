@@ -1,5 +1,5 @@
 const loginRouter = require("express").Router();
-const knex = require("knex");
+// const knex = require("knex");
 const bcrypt = require("bcryptjs");
 
 const userdb = require("../database/dbConfig.js");
