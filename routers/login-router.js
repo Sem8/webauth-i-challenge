@@ -28,7 +28,6 @@ loginRouter.post("/", (req, res) => {
     });
 });
 
-
 // WITH HELPER FUNCTIONS
 
 // loginRouter.post("/", (req, res) => {
