@@ -1,16 +1,20 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+const session = require('express-session');
 
 const usersRouter = require("./routers/users-router");
 const loginRouter = require("./routers/login-router");
 const registerRouter = require("./routers/register-router");
+const sessionConfig = require('./auth/session-config.js');
+
 
 const server = express();
 
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
+server.use(session(sessionConfig));
 
 server.get("/", (req, res) => {
   res.send(
