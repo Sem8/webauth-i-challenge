@@ -11,8 +11,8 @@ registerRouter.post("/", (req, res) => {
   const hash = bcrypt.hashSync(user.password, 4);
   user.password = hash;
   userdb("users")
-    // .where({ username: req.params.username })
-    // .first()
+    .where({ username: req.params.username })
+    .first()
     .insert(user)
     .then(saved => {
       res.status(201).json(saved);

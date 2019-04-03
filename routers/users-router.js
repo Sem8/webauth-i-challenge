@@ -6,7 +6,7 @@ const userdb = require("../database/dbConfig.js");
 const Users = require("../users/users-model.js");
 
 // WITHOUT HELPER FUNCTIONS
-usersRouter.get('/', restricted,(req, res) => {
+usersRouter.get('/', restricted, (req, res) => {
     userdb('users').select('id', 'username', 'password')
     .then(users => {
         res.json(users);

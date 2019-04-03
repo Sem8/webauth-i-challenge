@@ -8,15 +8,16 @@ module.exports = {
     cookie: {
         maxAge: 1000 * 60 * 60,
         secure: false,
-        httpOnly: true,
+        
     },
+    httpOnly: true,
     resave: false,
     saveUninitialized: false,
     store: new KnexSessionStore({
         knex: configuredKnex,
         tablename: 'sessions',
         sidfieldname: 'sid',
-        createtable: true,
+        createTable: true,
         clearInterval: 1000 * 60 * 60,
     }),
 };
